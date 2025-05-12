@@ -1,0 +1,25 @@
+<!-- templates/results.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Results</title>
+</head>
+<body>
+    <h2>Review:</h2>
+    <p>{{ review }}</p>
+    <h2>Prediction:</h2>
+    <p>This review is likely <strong>{{ 'Positive' if prediction == 1 else 'Negative' }}</strong>
+       ({{ probability }}% confidence).</p>
+
+    <p>Was this prediction correct?</p>
+    <form action="/thanks" method="POST">
+        <input type="hidden" name="review" value="{{ review }}">
+        <input type="hidden" name="sentiment" value="{{ prediction }}">
+        <button type="submit" name="feedback" value="1">Correct</button>
+        <button type="submit" name="feedback" value="0">Incorrect</button>
+    </form>
+   
+</body>
+</html>
+
+
